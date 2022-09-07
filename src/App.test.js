@@ -34,7 +34,7 @@ test('disable button when checkbox is checked', () => {
 
 test('re-enable button when checkbox is checked for second time', () => {
   render(<App />);
-  const checkbox = screen.getByRole('checkbox');
+  const checkbox = screen.getByRole('checkbox', {name: 'Disable button'});
   const button = screen.getByRole('button');
   fireEvent.click(checkbox);
   fireEvent.click(checkbox);
