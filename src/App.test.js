@@ -23,3 +23,20 @@ test('initial conditions', () => {
   const checkbox = screen.getByRole('checkbox');
   expect(checkbox).not.toBeChecked();
 })
+
+test('disable button when checkbox is checked', () => {
+  render(<App />);
+  const checkbox = screen.getByRole('checkbox');
+  const button = screen.getByRole('button');
+  fireEvent.click(checkbox);
+  expect(button).toBeDisabled();
+})
+
+test('re-enable button when checkbox is checked for second time', () => {
+  render(<App />);
+  const checkbox = screen.getByRole('checkbox');
+  const button = screen.getByRole('button');
+  fireEvent.click(checkbox);
+  fireEvent.click(checkbox);
+  expect(button).toBeEnabled();
+})
